@@ -1,0 +1,4 @@
+image: 818420521698.dkr.ecr.eu-west-1.amazonaws.com/otelpoc:nodeApp
+namespace: node-app
+otelSidecar: "true"
+instrumentation: "nodejs-instrumentation"

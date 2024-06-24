@@ -1,0 +1,23 @@
+version: '1'
+services:
+  postgres:
+    image: postgres
+    networks:
+      - nodeApp
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  nodeApp:
+    image: jsapp
+    networks:
+      - nodeApp
+    ports:
+      - 8080:8080
+networks:
+  nodeApp:
+volumes:
+  pg-data:
+    driver: local

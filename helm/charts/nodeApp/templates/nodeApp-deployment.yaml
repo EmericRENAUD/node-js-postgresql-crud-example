@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: node-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app-pod
+  template:
+    metadata:
+      labels:
+        app: node-app-pod
+      annotations:
+        sidecar.opentelemetry.io/inject: "{{ .Values.otelSidecar }}"
+        instrumentation.opentelemetry.io/inject-nodejs: "{{ .Values.instrumentation }}" 
+    spec:
+      containers:
+      - name: node-app
+        image: {{ .Values.image }}
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "64Mi"
+        ports:
+        - containerPort: 8080

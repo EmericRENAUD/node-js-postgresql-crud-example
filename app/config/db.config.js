@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "localhost",
+  HOST: "terraform-20240617083249544800000002.cborlircdo7c.eu-west-1.rds.amazonaws.com",
   USER: "postgres",
-  PASSWORD: "123",
-  DB: "testdb",
+  PASSWORD: "postgres",
+  DB: "nodeAppTutorial",
   dialect: "postgres",
   pool: {
     max: 5,
